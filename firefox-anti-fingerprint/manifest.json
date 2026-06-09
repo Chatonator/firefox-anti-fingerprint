@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Bouclier Anti-Empreinte",
+  "version": "1.2.0",
+  "description": "Protection maximale contre le fingerprinting web : falsification du Canvas, WebGL, AudioContext, polices, User-Agent, et blocage WebRTC sur tous les sites.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "anti-fingerprint@replit.example",
+      "strict_min_version": "115.0"
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "privacy",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["src/profile.js", "src/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/profile.js", "src/content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_popup": "src/popup.html",
+    "default_icon": "icons/icon.svg",
+    "default_title": "Bouclier Anti-Empreinte"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Bouclier Anti-Empreinte</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <span class="dot" id="statusDot"></span>
+        <h1>Bouclier Anti-Empreinte</h1>
+      </div>
+      <label class="master">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <p class="subtitle" id="subtitle">Protection maximale active</p>
+
+    <section class="card">
+      <div class="card-title">Identité simulée</div>
+      <div class="ua" id="ua">—</div>
+      <dl class="specs" id="specs">
+        <div class="spec"><dt>Système</dt><dd id="specPlatform">—</dd></div>
+        <div class="spec"><dt>Écran</dt><dd id="specScreen">—</dd></div>
+        <div class="spec"><dt>WebGL</dt><dd id="specWebgl">—</dd></div>
+      </dl>
+      <div class="scope" id="scope">
+        <label class="scope-opt">
+          <input type="radio" name="scope" value="active" checked />
+          <span>Onglet actif</span>
+        </label>
+        <label class="scope-opt">
+          <input type="radio" name="scope" value="all" />
+          <span>Tous les onglets</span>
+        </label>
+      </div>
+      <button id="newIdentity" class="btn">🔄 Nouvelle identité</button>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Protections</div>
+      <div class="toggles" id="toggles">
+        <label class="row"><span>En-têtes (User-Agent)</span><input type="checkbox" data-key="headers" /></label>
+        <label class="row"><span>Navigateur &amp; matériel</span><input type="checkbox" data-key="navigator" /></label>
+        <label class="row"><span>Écran / résolution</span><input type="checkbox" data-key="screen" /></label>
+        <label class="row"><span>Fuseau horaire (UTC)</span><input type="checkbox" data-key="timezone" /></label>
+        <label class="row"><span>Canvas</span><input type="checkbox" data-key="canvas" /></label>
+        <label class="row"><span>WebGL</span><input type="checkbox" data-key="webgl" /></label>
+        <label class="row"><span>Audio</span><input type="checkbox" data-key="audio" /></label>
+        <label class="row"><span>Polices</span><input type="checkbox" data-key="fonts" /></label>
+        <label class="row"><span>WebRTC (anti-fuite IP)</span><input type="checkbox" data-key="webrtc" /></label>
+      </div>
+    </section>
+
+    <p class="note">Un changement d'identité recharge la page pour s'appliquer aussitôt.</p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

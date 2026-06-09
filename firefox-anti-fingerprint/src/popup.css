@@ -1,0 +1,265 @@
+:root {
+  --bg: #0f1220;
+  --card: #1a1f33;
+  --text: #e8ebf5;
+  --muted: #9aa3c0;
+  --accent: #5b8cff;
+  --on: #34d399;
+  --off: #6b7280;
+  --border: #2a3150;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand h1 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--off);
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+}
+
+.dot.on {
+  background: var(--on);
+}
+
+.subtitle {
+  margin: 6px 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.ua {
+  font-size: 11px;
+  line-height: 1.4;
+  word-break: break-all;
+  background: #0c0f1c;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  color: #cfd6f0;
+  margin-bottom: 10px;
+}
+
+.specs {
+  margin: 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.spec dt {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  flex: 0 0 auto;
+}
+
+.spec dd {
+  margin: 0;
+  text-align: right;
+  color: #cfd6f0;
+  word-break: break-word;
+}
+
+.scope {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.scope-opt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 6px 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: #0c0f1c;
+}
+
+.scope-opt input {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.feedback {
+  font-size: 11.5px;
+  text-align: center;
+  margin-top: 8px;
+  min-height: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.feedback.show {
+  opacity: 1;
+}
+
+.feedback.ok {
+  color: var(--on);
+}
+
+.feedback.err {
+  color: #f87171;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 2px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(42, 49, 80, 0.5);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* interrupteur principal */
+.master {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.master input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--off);
+  border-radius: 24px;
+  transition: 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.master input:checked + .slider {
+  background: var(--on);
+}
+
+.master input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.note {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin: 4px 0 0;
+}
+
+.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
